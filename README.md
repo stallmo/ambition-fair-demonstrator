@@ -2,6 +2,12 @@
 
 An interactive desktop application demonstrating how **unsupervised anomaly detection** can support **smart manufacturing**, demonstrated during a workshop at the [AMBITION Industry Fair 2026](https://www.ambition-industry.be/) in Liège, Belgium, as part of the Interreg DIGIMACH project (https://www.interregmeuserhine.eu/en/projects/digimach/).
 
+  <table>
+    <tr>
+      <td><img src="assets/img/demonstrator_screenshot.png" width="400"></td>
+      <td><img src="assets/img/ambition_fair_demo.jpeg" width="400"></td>
+    </tr>
+  </table>
 ---
 
 ## Purpose
