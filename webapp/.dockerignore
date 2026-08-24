@@ -1,0 +1,32 @@
+# Excludes dev-only / generated artifacts from the Docker build context
+# (story H1) so they are never baked into the production image.
+#
+# NOTE: .streamlit/ is intentionally NOT excluded -- it ships the dark
+# theme config (.streamlit/config.toml) that the running app relies on.
+
+.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+**/.pytest_cache/
+test/
+requirements-dev.txt
+docs/
+
+# Locally-generated simulation CSVs: excluded so the image always proves
+# generate_scenarios() creates them fresh inside the container on first
+# boot, rather than silently shipping a stale/pre-baked copy.
+assets/simulations/*.csv
+
+# Version control / editor / OS cruft that shouldn't be in the image.
+.git/
+.gitignore
+.idea/
+.vscode/
+.DS_Store
+
+# Container-related files themselves don't need to be inside the image.
+Dockerfile
+.dockerignore
