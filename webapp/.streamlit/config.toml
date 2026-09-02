@@ -1,0 +1,19 @@
+# Dracula-derived dark theme for the predictive-maintenance web demo.
+#
+# Story G1: mirrors the desktop app's Dracula palette (assets/style.qss /
+# main.py's dark matplotlib rcParams, and the color constants defined in
+# ui_web/chart.py: COLOR_FIG_BG, COLOR_AXES_BG, COLOR_TEXT, and the GMM
+# overlay purple) so the Streamlit chrome (sidebar, widgets, background)
+# visually matches the chart/plot area instead of Streamlit's default
+# light/blue theme.
+#
+# Streamlit auto-loads this file from `.streamlit/config.toml` relative to
+# the working directory the app is launched from (i.e. `webapp/`); no code
+# needs to reference it. Key names below are case-sensitive and must match
+# Streamlit's documented `[theme]` config schema exactly.
+[theme]
+base = "dark"
+primaryColor = "#bd93f9"
+backgroundColor = "#1e1e2e"
+secondaryBackgroundColor = "#2a2a3e"
+textColor = "#f8f8f2"

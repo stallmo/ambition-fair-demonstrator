@@ -1,0 +1,32 @@
+# docker-compose.yml for the Predictive Maintenance Demonstrator web app
+# (story H2 -- booth resilience).
+#
+# Lets an operator start the whole app with a single command:
+#   docker compose up -d --build
+# with no manual `docker build` / `docker run` steps. The `restart:
+# unless-stopped` policy makes the container self-recover if the
+# Streamlit process inside it dies mid-demo (e.g. crashes) on an
+# unattended booth laptop, without requiring anyone to notice and
+# manually restart it. "unless-stopped" (rather than "always") is
+# chosen so that an operator who deliberately runs `docker compose
+# stop`/`down` is respected -- Docker won't fight a manual stop.
+#
+# No top-level `version:` key: the installed `docker compose` (Compose
+# v2 plugin, `docker compose version` -> v5.0.2) treats the Compose
+# Specification as version-less and warns that `version:` is obsolete,
+# so it is intentionally omitted here.
+#
+# No volume mount for assets/simulations/: per H1's design, the
+# scenario CSVs are regenerated fresh inside the container's own
+# filesystem on every boot (see Dockerfile comments), so they are
+# intentionally ephemeral and not persisted across restarts.
+
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pm-demonstrator-web
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
